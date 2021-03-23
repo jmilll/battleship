@@ -1,16 +1,37 @@
-const Ship = (length, rotated) => {
-    const shipLength = length;
-    const rotated = rotated;
+import React, { useEffect, useState } from 'react'
 
-    let hitPoints = shipLength;
+const Ship = (props) => {
 
-    const hit = () => {
-        hitPoints--;
+console.log(props)
+    //const shipLength = length;
+    //const rotated = rotated;
+
+    //let hitPoints = shipLength;
+
+    // const hit = () => {
+    //     hitPoints--;
+    // }
+
+    // const isSunk = () => {
+    //     hitPoints === 0? true : false;
+    // }
+
+    const createShip = () => {
+        let parts = [];
+        for (let i = 0; i < props.size; i++) {
+            parts.push(<div className='ship-part' key={i} />)        
+        }
+        return parts;
     }
 
-    const isSunk = () => {
-        hitPoints === 0? true : false;
-    }
+    return (
+        <div>
+            <p> {props.name}</p>
+            <div className='ship-container' onClick={() => props.handleClick(props.name)}>
+                {createShip()}
+            </div>
+        </div>
+    )
 };
 
 export default Ship;
