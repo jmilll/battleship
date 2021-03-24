@@ -46,6 +46,10 @@
   cursor: pointer;
 }
 
+.ship-place {
+  background: tomato;
+}
+
 .cell {
   border: 1px solid #44aed8;
 }
