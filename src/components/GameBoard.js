@@ -59,7 +59,7 @@ const GameBoard = () =>  {
         <div className='gameboard'>
             {board.map(item => {
                 return(
-                    <div className='cell' data-value={board.indexOf(item)} key={item.index} onClick={() => handleClick(item)}>
+                    <div className={'cell '+ board.indexOf(item)} data-value={board.indexOf(item)} key={item.index} onClick={() => handleClick(item)}>
                     </div>
                 )
             })}

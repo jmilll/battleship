@@ -19,7 +19,7 @@ console.log(props)
     const createShip = () => {
         let parts = [];
         for (let i = 0; i < props.size; i++) {
-            parts.push(<div className='ship-part' key={i} />)        
+            parts.push(<div className='ship-part' data-name={props.name + i} key={i} />)        
         }
         return parts;
     }
