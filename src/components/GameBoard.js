@@ -16,18 +16,34 @@ const GameBoard = () =>  {
     }
 
     function findTile(xCoord, yCoord) {
+        let domTile = document.querySelectorAll('.cell')
         let tile = board.find(
             (({x}) => x === xCoord) && (({y}) => y === yCoord)
         )
         console.log(tile)
         console.log(board.indexOf(tile))
         tile.occupied = true;
-        console.log(board)
+        //console.log(board)
         //tile.classList.add('ship-place')
+        domTile[board.indexOf(tile)].classList.add('selected')
     }
 
-    // const [board, setBoard] = useState([]);
-
+    function shipPlaced(xCoord, yCoord, length) {
+        let domTile = document.querySelectorAll('.cell')
+        let tile = board.find(
+            (({x}) => x === xCoord) && (({y}) => y === yCoord)
+        )
+        console.log(tile)
+        console.log(board.indexOf(tile))
+        tile.occupied = true;
+        //console.log(board)
+        //tile.classList.add('ship-place')
+        for (let i = 0; i < length; i++) {
+            domTile[board.indexOf(tile)+i].classList.add('ship-placed')
+            
+        }
+        
+    }
 
     function test() {
         console.log('test')
@@ -41,12 +57,6 @@ const GameBoard = () =>  {
             board.push({x, y, occupied: false})
         }
     }
-    // for (let row = 0; row < gridSize; row++) {
-    //     for (let column = 0; column < gridSize; column++ ) {
-    //         board.push({column, row, occupied: false})
-    //     }
-    // }
-    //console.log(board)
     
     const handleClick = (item) => {
         console.log(item)
@@ -64,6 +74,7 @@ const GameBoard = () =>  {
                 )
             })}
             <button onClick={() => findTile(0,4)}>Test cruiser</button>
+            <button onClick={() => shipPlaced(0,4,4)}>Place Battleship</button>
         </div>
     )
 };
