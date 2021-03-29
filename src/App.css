@@ -46,8 +46,12 @@
   cursor: pointer;
 }
 
-.ship-place {
+.ship-placed {
   background: tomato;
+}
+
+.ship-hover {
+  background: rgb(255, 191, 180);
 }
 
 .cell {

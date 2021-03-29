@@ -28,7 +28,7 @@ const GameBoard = () =>  {
         domTile[board.indexOf(tile)].classList.add('selected')
     }
 
-    function shipPlaced(xCoord, yCoord, length) {
+    function shipPlaced(xCoord, yCoord, length, rotated) {
         let domTile = document.querySelectorAll('.cell')
         let tile = board.find(
             (({x}) => x === xCoord) && (({y}) => y === yCoord)
@@ -38,11 +38,29 @@ const GameBoard = () =>  {
         tile.occupied = true;
         //console.log(board)
         //tile.classList.add('ship-place')
-        for (let i = 0; i < length; i++) {
-            domTile[board.indexOf(tile)+i].classList.add('ship-placed')
-            
-        }
-        
+        if (!rotated) {
+            for (let i = 0; i < length; i++) {
+                domTile[board.indexOf(tile)+i].classList.add('ship-placed')  
+            }
+        } else {
+            for (let i = 0; i < length; i++) {
+                domTile[board.indexOf(tile)+(10*i)].classList.add('ship-placed')  
+            }
+        }  
+    }
+
+    function indexShipPlaced(index, shipLength, rotated) {
+        let domTiles = document.querySelectorAll('.cell')
+
+        if (!rotated) {
+            for (let i = 0; i < shipLength; i++) {
+                domTiles[index + i].classList.add('ship-placed')  
+            }
+        } else {
+            for (let i = 0; i < shipLength; i++) {
+                domTiles[index + (i * 10)].classList.add('ship-placed')  
+            }
+        }  
     }
 
     function test() {
@@ -59,10 +77,13 @@ const GameBoard = () =>  {
     }
     
     const handleClick = (item) => {
+        const index = board.indexOf(item);
         console.log(item)
         console.log(item.x +', '+ item.y)
-        //console.log('coord1 x = ' + item.column)
-        //console.log('coord2 y = ' + item.row)
+        console.log('tile index ' + board.indexOf(item))
+        indexShipPlaced(index, 3, true)
+        //shipPlaced(item.x, item.y, 3, false)
+        //findTile(item.x, item.y)
     }
 
     return (
@@ -74,7 +95,8 @@ const GameBoard = () =>  {
                 )
             })}
             <button onClick={() => findTile(0,4)}>Test cruiser</button>
-            <button onClick={() => shipPlaced(0,4,4)}>Place Battleship</button>
+            <button onClick={() => shipPlaced(1, 4, 4, false)}>Place Battleship</button>
+            <button onClick={() => shipPlaced(3, 5, 4, true)}>Place Battleship R</button>
         </div>
     )
 };
