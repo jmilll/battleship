@@ -64,7 +64,7 @@ const GameBoard = () =>  {
     }
 
     function test() {
-        console.log('test')
+        console.log('test');
     }
 
     let board = [];
