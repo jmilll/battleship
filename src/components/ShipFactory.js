@@ -7,7 +7,7 @@ const ShipFactory = () => {
         {
             name: 'carrier',
             size: 5,
-            rotate: 0,
+            rotate: false,
             hp: 5,
             sunk: false,
     
@@ -15,28 +15,28 @@ const ShipFactory = () => {
         {
             name: 'battleship',
             size: 4,
-            rotate: 0,
+            rotate: false,
             hp: 4,
             sunk: false,
         },
         {
             name: 'cruiser',
             size: 3,
-            rotate: 0,
+            rotate: false,
             hp: 3,
             sunk: false,
         },
         {
             name: 'submarine',
             size: 3,
-            rotate: 0,
+            rotate: false,
             hp: 3,
             sunk: false,
         },
         {
             name: 'destroyer',
             size: 2,
-            rotate: 0,
+            rotate: false,
             hp: 2,
             sunk: false,
         },
