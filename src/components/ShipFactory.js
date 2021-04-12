@@ -55,6 +55,7 @@ const ShipFactory = () => {
                         handleClick={handleClick}
                         name={item.name}
                         size={item.size}
+                        rotate={item.rotate}
                         hp={item.hp}
                         sunk={item.sunk}
                     />

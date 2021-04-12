@@ -27,7 +27,7 @@ console.log(props)
     return (
         <div>
             <p> {props.name}</p>
-            <div className='ship-container' onClick={() => props.handleClick(props.name)}>
+            <div className='ship-container' onClick={() => props.handleClick(props)}>
                 {createShip()}
             </div>
         </div>

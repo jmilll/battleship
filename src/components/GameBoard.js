@@ -86,6 +86,18 @@ const GameBoard = () =>  {
         //findTile(item.x, item.y)
     }
 
+    const [shipSelect, setShipSelect] = useState('carrier')
+
+    let domTilesHover = document.querySelectorAll('.cell')
+
+    function  shipHover(tile) {
+        //e.preventDefault()
+        console.log(tile.index)
+    }
+    domTilesHover.forEach(tile => tile.addEventListener('mouseOver', () => shipHover(tile)))
+    //domTilesHover.forEach(tile => tile.addEventListener('mouseover', (e) => console.log(e.target)))
+
+
     return (
         <div className='gameboard'>
             {board.map(item => {
