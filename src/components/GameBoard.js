@@ -87,15 +87,64 @@ const GameBoard = () =>  {
     }
 
     const [shipSelect, setShipSelect] = useState('carrier')
+    const [selectedShipLength, setSelectedShipLength] = useState(5)
 
+    //let selectedShipLength = 5;
     let domTilesHover = document.querySelectorAll('.cell')
 
-    function  shipHover(tile) {
-        //e.preventDefault()
-        console.log(tile.index)
+    function shipHover(e, target) {
+        e.preventDefault();
+        const index = target.dataset.value;
+        const length = selectedShipLength;
+        console.log(domTilesHover[index])
+        domTilesHover[index].classList.add('ship-hover')
+        //domTilesHover[index+1].classList.add('ship-hover')/
+        
+        // for (let i = 0; i < length; i++) {
+        //     domTilesHover[index + i].classList.add('ship-hover')  
+        // }
+
+        // if (!target.classList.contains('ship-hover')) {
+        //     for (let i = 0; i < selectedShipLength; i++) {
+        //         domTilesHover[index + i].classList.add('ship-hover')  
+        //     }
+
+
+        // } else {
+        //     for (let i = 0; i < selectedShipLength; i++) {
+        //         domTilesHover[index + i].classList.remove('ship-hover')  
+        //     }
+        // }
+
+
+
+        //target.classList.add('ship-hover')
+        //let index = target.dataset.value;
+        //console.log(target.dataset.value)
+        
+        // for (let i = 0; i < selectedShipLength; i++) {
+        //     domTilesHover[index + i].classList.add('ship-hover')  
+        // }
+        
+
     }
-    domTilesHover.forEach(tile => tile.addEventListener('mouseOver', () => shipHover(tile)))
-    //domTilesHover.forEach(tile => tile.addEventListener('mouseover', (e) => console.log(e.target)))
+
+    useEffect(() => {
+        console.log('start effect')
+        console.log('load event listeners')
+
+        domTilesHover.forEach(tile => tile.addEventListener('mouseenter', (e) => shipHover(e, e.target)))
+        //domTilesHover.forEach(tile => tile.addEventListener('mouseleave', (e) => shipHover(e.target)))
+        //domTilesHover.forEach(tile => tile.addEventListener('mouseenter', (e) => console.log(e.target)))
+
+        console.log('end effect')
+      }, [])
+
+
+
+
+
+
 
 
     return (
